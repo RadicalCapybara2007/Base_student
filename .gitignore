@@ -31,3 +31,5 @@ build/
 
 ### VS Code ###
 .vscode/
+gists/
+demo/src/main/resources/application.properties
