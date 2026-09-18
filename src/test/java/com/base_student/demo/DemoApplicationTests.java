@@ -11,13 +11,3 @@ class DemoApplicationTests {
 	}
 
 }
-
-/*
- * This class is used to test the application.
- * It is used to test the application context.
- * It is used to test the application configuration.
- * It is used to test the application database.
- * It is used to test the application logging.
- * It is used to test the application security.
- * It is used to test the application monitoring.
- */
