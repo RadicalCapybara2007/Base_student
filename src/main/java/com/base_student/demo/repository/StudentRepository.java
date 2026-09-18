@@ -7,6 +7,5 @@ import com.base_student.demo.model.StudentModel;
 
 @Repository 
 public interface StudentRepository extends JpaRepository<StudentModel, Integer> {
-
     
 } 

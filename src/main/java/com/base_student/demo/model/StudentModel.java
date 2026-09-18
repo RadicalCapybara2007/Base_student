@@ -20,12 +20,10 @@ import tools.jackson.databind.ObjectMapper;
 @AllArgsConstructor 
 @Entity
 @Table(name = "student")
-
 public class StudentModel {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-
     private Integer id;
     @Column(name = "name", columnDefinition = "VARCHAR(80)")
     private String name;
