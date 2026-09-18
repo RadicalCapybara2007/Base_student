@@ -31,4 +31,7 @@ build/
 
 ### VS Code ###
 .vscode/
+
 toDo.md
+gists/
+src/main/resources/application-dev.properties
