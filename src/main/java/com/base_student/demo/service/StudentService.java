@@ -19,7 +19,9 @@ public class StudentService {
     
     public List<StudentDto> findAll() {
         return studentRepository.findAll().stream().map(StudentModel::toDto).toList();
-        
     }
 
+    public StudentDto findById(Integer id) {
+        return studentRepository.findById(id).map(StudentModel::toDto).orElse(null);
+    }
 }
