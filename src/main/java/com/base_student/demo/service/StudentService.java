@@ -28,7 +28,7 @@ public class StudentService {
 
     public StudentRsDto create(StudentDto dto){
 
-        Integer id = studentRepository.save(dto.toModel());
+        StudentModel id = studentRepository.save(dto.toModel());
         return new StudentRsDto("Student added", id);
     }
     
