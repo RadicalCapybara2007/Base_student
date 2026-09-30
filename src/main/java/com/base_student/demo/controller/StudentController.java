@@ -25,4 +25,11 @@ public class StudentController {
         List<StudentDto> studentDtos = studentService.findAll();
         return new ResponseEntity<>(studentDtos, HttpStatus.OK);
     }
+
+    @PostMapping
+    public ResponseEntity<?> save(@RequestBody StudentDto studentdto){
+
+        studnetService.create(studentDto);
+        return new ResponseEntity<>(rsDto, HttpStatus.ok);
+    }
 }
