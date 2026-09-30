@@ -9,6 +9,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import com.base_student.demo.dto.StudentDto;
 import com.base_student.demo.service.StudentService;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 
 @Controller 
 @RequestMapping(value = "/student")
@@ -29,7 +31,7 @@ public class StudentController {
     @PostMapping
     public ResponseEntity<?> save(@RequestBody StudentDto studentdto){
 
-        studnetService.create(studentDto);
+        studentService.create(studentdto);
         return new ResponseEntity<>(rsDto, HttpStatus.ok);
     }
 }
