@@ -1,9 +1,9 @@
-package com.base_student.util;
+package com.base_student.demo.util;
 
 import org.apache.logging.log4j.util.Strings;
 import org.springframework.stereotype.Component;
-import com.base_student.dto.StudentDto;
-import com.base_student.exception.BusinessException;
+import com.base_student.demo.dto.StudentDto;
+import com.base_student.demo.exception.BusinessException;
 
 @Component
 public class ValidationUtil {

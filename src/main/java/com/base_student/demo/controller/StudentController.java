@@ -10,9 +10,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.base_student.util.Validationutil;
 import com.base_student.demo.dto.StudentDto;
 import com.base_student.demo.dto.StudentRsDto;
+import com.base_student.demo.exception.BusinessException;
 import com.base_student.demo.service.StudentService;
 import com.base_student.demo.util.ValidationUtil;
 
@@ -35,9 +35,9 @@ public class StudentController {
     }
 
     @PostMapping
-    public ResponseEntity<?> save(@RequestBody StudentDto studentdto) throws BusinessException {
+    public ResponseEntity<?> save(@RequestBody StudentDto studentDto) throws BusinessException {
         validationUtil.validate(studentDto);
-        StudentRsDto  rsDto = studentService.create(studentdto);
+        StudentRsDto  rsDto = studentService.create(studentDto);
         return new ResponseEntity<>(rsDto, HttpStatus.OK);
     }
 }

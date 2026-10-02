@@ -1,10 +1,10 @@
-
-package com.base_student.exception;
+package com.base_student.demo.exception;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ControllerAdvice;
-import com.base_student.dto.ErrorMessageDto;;
+
+import com.base_student.demo.dto.ErrorMessageDto;;
 
 @ControllerAdvice
 public class ExceptionHandler {
