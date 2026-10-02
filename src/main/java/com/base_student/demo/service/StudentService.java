@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.stereotype.Service;
 
 import com.base_student.demo.dto.StudentDto;
+import com.base_student.demo.dto.StudentRsDto;
 import com.base_student.demo.model.StudentModel;
 import com.base_student.demo.repository.StudentRepository;
 
@@ -24,4 +25,11 @@ public class StudentService {
     public StudentDto findById(Integer id) {
         return studentRepository.findById(id).map(StudentModel::toDto).orElse(null);
     }
+
+    public StudentRsDto create(StudentDto dto){
+
+        StudentModel id = studentRepository.save(dto.toModel());
+        return new StudentRsDto("Student added", id);
+    }
+    
 }
