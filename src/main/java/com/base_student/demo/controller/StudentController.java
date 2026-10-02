@@ -9,6 +9,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import com.base_student.demo.dto.StudentDto;
 import com.base_student.demo.service.StudentService;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 
 @Controller 
 @RequestMapping(value = "/student")
@@ -24,5 +26,12 @@ public class StudentController {
     public ResponseEntity<?> findAll() {
         List<StudentDto> studentDtos = studentService.findAll();
         return new ResponseEntity<>(studentDtos, HttpStatus.OK);
+    }
+
+    @PostMapping
+    public ResponseEntity<?> save(@RequestBody StudentDto studentdto){
+
+        studentService.create(studentdto);
+        return new ResponseEntity<>(rsDto, HttpStatus.ok);
     }
 }
