@@ -1,4 +1,4 @@
-package com.base_student.exception;
+package com.base_student.demo.exception;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

@@ -1,4 +1,5 @@
-package com.base_student.dto;
+
+package com.base_student.demo.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
