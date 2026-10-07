@@ -26,10 +26,8 @@ public class StudentService {
         return studentRepository.findById(id).map(StudentModel::toDto).orElse(null);
     }
 
-    public StudentRsDto create(StudentDto dto){
-
-        StudentModel id = studentRepository.save(dto.toModel());
-        return new StudentRsDto("Student added", id);
+    public StudentRsDto create(StudentDto dto) {
+        StudentModel student = studentRepository.save(dto.toModel());
+        return new StudentRsDto("Student added", student.getId());
     }
-    
 }

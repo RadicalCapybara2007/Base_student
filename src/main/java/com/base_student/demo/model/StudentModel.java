@@ -1,23 +1,14 @@
 package com.base_student.demo.model;
 
-import com.base_student.demo.dto.StudentDto;
-
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-import tools.jackson.databind.ObjectMapper;
 
-@Data
-@Builder 
-@NoArgsConstructor 
-@AllArgsConstructor 
+import com.base_student.demo.dto.StudentDto;
+
 @Entity
 @Table(name = "student")
 public class StudentModel {
@@ -25,30 +16,52 @@ public class StudentModel {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-    @Column(name = "name", columnDefinition = "VARCHAR(80)")
+
+    @Column(name = "name", length = 80, nullable = false)
     private String name;
-    @Column(name = "last_name", columnDefinition = "VARCHAR(50)")
+
+    @Column(name = "last_name", length = 50, nullable = false)
     private String lastName;
-    @Column(name = "phone", columnDefinition = "VARCHAR(20)")
+
+    @Column(name = "phone", length = 20)
     private String phone;
-    @Column(name = "email", columnDefinition = "VARCHAR(80)")
+
+    @Column(name = "email", length = 80)
     private String email;
 
-    // Getters and Setters
-
-    public StudentDto toDto() {
-        return StudentDto.builder()
-            .id(this.id)
-            .name(this.name)
-            .lastName(this.lastName)
-            .phone(this.phone)
-            .email(this.email)
-            .build();
+    protected StudentModel() {
     }
 
-    @Override
-    public String toString() {
-        return new ObjectMapper().writeValueAsString(this);
+    public StudentModel(Integer id, String name, String lastName, String phone, String email) {
+        this.id = id;
+        this.name = name;
+        this.lastName = lastName;
+        this.phone = phone;
+        this.email = email;
+    }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public StudentDto toDto() {
+        return new StudentDto(id, name, lastName, phone, email);
     }
 }
 
