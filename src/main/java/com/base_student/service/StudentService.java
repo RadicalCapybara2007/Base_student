@@ -1,33 +1,30 @@
-package com.base_student.demo.service;
+package com.base_student.service;
 
 import java.util.List;
 
 import org.springframework.stereotype.Service;
 
-import com.base_student.demo.dto.StudentDto;
-import com.base_student.demo.dto.StudentRsDto;
-import com.base_student.demo.model.StudentModel;
-import com.base_student.demo.repository.StudentRepository;
+import com.base_student.dto.StudentDto;
+import com.base_student.dto.StudentRsDto;
+import com.base_student.model.StudentModel;
+import com.base_student.repository.StudentRepository;
 
-@Service 
+@Service
 public class StudentService {
-    
+
     private final StudentRepository studentRepository;
 
     public StudentService(StudentRepository studentRepository) {
         this.studentRepository = studentRepository;
     }
-    
+
     public List<StudentDto> findAll() {
         return studentRepository.findAll().stream().map(StudentModel::toDto).toList();
-    }
-
-    public StudentDto findById(Integer id) {
-        return studentRepository.findById(id).map(StudentModel::toDto).orElse(null);
     }
 
     public StudentRsDto create(StudentDto dto) {
         StudentModel student = studentRepository.save(dto.toModel());
         return new StudentRsDto("Student added", student.getId());
     }
+
 }

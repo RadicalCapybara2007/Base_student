@@ -1,4 +1,4 @@
-package com.base_student.demo.controller;
+package com.base_student.controller;
 
 import java.util.List;
 
@@ -10,11 +10,11 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.base_student.demo.dto.StudentDto;
-import com.base_student.demo.dto.StudentRsDto;
-import com.base_student.demo.exception.BusinessException;
-import com.base_student.demo.service.StudentService;
-import com.base_student.demo.util.ValidationUtil;
+import com.base_student.dto.StudentDto;
+import com.base_student.dto.StudentRsDto;
+import com.base_student.exception.BusinessException;
+import com.base_student.service.StudentService;
+import com.base_student.util.ValidationUtil;
 
 @RestController
 @RequestMapping("/student")

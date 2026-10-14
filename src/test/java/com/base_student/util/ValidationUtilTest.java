@@ -1,10 +1,10 @@
-package com.base_student.demo.util;
+package com.base_student.util;
 
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import org.junit.jupiter.api.Test;
 
-import com.base_student.demo.dto.StudentDto;
-import com.base_student.demo.exception.BusinessException;
+import com.base_student.dto.StudentDto;
+import com.base_student.exception.BusinessException;
 
 class ValidationUtilTest {
 
