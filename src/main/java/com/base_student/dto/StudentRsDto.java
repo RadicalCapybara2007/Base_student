@@ -1,4 +1,5 @@
-package com.base_student.demo.dto;
+package com.base_student.dto;
 
 public record StudentRsDto(String message, Integer id) {
+
 }

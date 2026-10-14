@@ -1,4 +1,4 @@
-package com.base_student.demo.controller;
+package com.base_student.controller;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.Mockito.verify;
@@ -13,10 +13,10 @@ import org.mockito.MockitoAnnotations;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 
-import com.base_student.demo.dto.StudentDto;
-import com.base_student.demo.dto.StudentRsDto;
-import com.base_student.demo.service.StudentService;
-import com.base_student.demo.util.ValidationUtil;
+import com.base_student.dto.StudentDto;
+import com.base_student.dto.StudentRsDto;
+import com.base_student.service.StudentService;
+import com.base_student.util.ValidationUtil;
 
 class StudentControllerTest {
 

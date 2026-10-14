@@ -1,11 +1,11 @@
-package com.base_student.demo.exception;
+package com.base_student.exception;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import org.junit.jupiter.api.Test;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 
-import com.base_student.demo.dto.ErrorMessageDto;
+import com.base_student.dto.ErrorMessageDto;
 
 class ExceptionHandlerTest {
 
@@ -20,7 +20,7 @@ class ExceptionHandlerTest {
         assertThat(response.getStatusCode()).isEqualTo(HttpStatus.BAD_REQUEST);
         assertThat(response.getBody()).isInstanceOf(ErrorMessageDto.class);
         ErrorMessageDto body = response.getBody();
-        assertThat(body.httpStatus()).isEqualTo(HttpStatus.BAD_REQUEST.toString());
-        assertThat(body.message()).isEqualTo("El nombre no debe estar vacío");
+        assertThat(body.getHttpStatus()).isEqualTo(HttpStatus.BAD_REQUEST.toString());
+        assertThat(body.getMessage()).isEqualTo("El nombre no debe estar vacío");
     }
 }
