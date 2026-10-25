@@ -9,11 +9,10 @@ import com.base_student.dto.ErrorMessageDto;;
 public class ExceptionHandler {
 
     @org.springframework.web.bind.annotation.ExceptionHandler(BusinessException.class)
-    public ResponseEntity<ErrorMessageDto> businessExceptionHandler(BusinessException businessException) {
-        ErrorMessageDto errorMessageDto = ErrorMessageDto.builder()
-                .httpStatus(HttpStatus.BAD_REQUEST.toString())
-                .message(businessException.getMessage())
-                .build();
+    public ResponseEntity<?> businessExceptionHandler(BusinessException businessException) {
+        ErrorMessageDto errorMessageDto = new ErrorMessageDto(
+                HttpStatus.BAD_REQUEST.toString(),
+                businessException.getMessage());
         return new ResponseEntity<>(errorMessageDto, HttpStatus.BAD_REQUEST);
     }
 

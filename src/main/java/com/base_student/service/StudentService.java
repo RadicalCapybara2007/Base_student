@@ -1,13 +1,13 @@
 package com.base_student.service;
 
 import java.util.List;
-
 import org.springframework.stereotype.Service;
 
 import com.base_student.dto.StudentDto;
 import com.base_student.dto.StudentRsDto;
+import com.base_student.exception.BusinessException;
 import com.base_student.model.StudentModel;
-import com.base_student.repository.StudentRepository;
+import com.base_student.respository.StudentRepository;
 
 @Service
 public class StudentService {
@@ -22,9 +22,17 @@ public class StudentService {
         return studentRepository.findAll().stream().map(StudentModel::toDto).toList();
     }
 
+    public StudentDto findById(Integer id) throws BusinessException {
+        return studentRepository.findById(id).get().toDto();
+    }
+
     public StudentRsDto create(StudentDto dto) {
-        StudentModel student = studentRepository.save(dto.toModel());
-        return new StudentRsDto("Student added", student.getId());
+        Integer id = studentRepository.save(dto.toModel()).getId();
+        return new StudentRsDto("Student added", id);
+    }
+
+    public void deleteById(Integer id) {
+        studentRepository.deleteById(id);
     }
 
 }
