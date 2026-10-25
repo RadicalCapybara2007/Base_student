@@ -1,13 +1,13 @@
-package com.base_student.demo;
+package com.base_student;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class DemoApplication {
+public class BaseStudentApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(DemoApplication.class, args);
+		SpringApplication.run(BaseStudentApplication.class, args);
 	}
 
 }

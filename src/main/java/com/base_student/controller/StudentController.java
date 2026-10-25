@@ -1,4 +1,4 @@
-package com.base_student.demo.controller;
+package com.base_student.controller;
 
 import java.util.List;
 
@@ -9,17 +9,18 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
-import com.base_student.demo.dto.StudentDto;
-import com.base_student.demo.dto.StudentRsDto;
-import com.base_student.demo.exception.BusinessException;
-import com.base_student.demo.service.StudentService;
-import com.base_student.demo.util.ValidationUtil;
+import com.base_student.util.ValidationUtil;
+import com.base_student.dto.StudentDto;
+import com.base_student.dto.StudentRsDto;
+import com.base_student.exception.BusinessException;
+import com.base_student.service.StudentService;
 
-@Controller 
+@Controller
 @RequestMapping(value = "/student")
 public class StudentController {
-    
+
     private final StudentService studentService;
     private final ValidationUtil validationUtil;
 
@@ -28,16 +29,21 @@ public class StudentController {
         this.validationUtil = validationUtil;
     }
 
-    @GetMapping    
-    public ResponseEntity<?> findAll() {
-        List<StudentDto> studentDtos = studentService.findAll();
-        return new ResponseEntity<>(studentDtos, HttpStatus.OK);
+    @GetMapping
+    public ResponseEntity<?> find(@RequestParam(value = "id", required = false) Integer id) throws BusinessException {
+        if (id == null) {
+            List<StudentDto> studentDtos = studentService.findAll();
+            return new ResponseEntity<>(studentDtos, HttpStatus.OK);
+        } else {
+            return new ResponseEntity<>(studentService.findById(id), HttpStatus.OK);
+        }
     }
 
     @PostMapping
     public ResponseEntity<?> save(@RequestBody StudentDto studentDto) throws BusinessException {
         validationUtil.validate(studentDto);
-        StudentRsDto  rsDto = studentService.create(studentDto);
+        StudentRsDto rsDto = studentService.create(studentDto);
         return new ResponseEntity<>(rsDto, HttpStatus.OK);
     }
+
 }

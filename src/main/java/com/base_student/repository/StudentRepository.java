@@ -1,11 +1,10 @@
-package com.base_student.demo.repository;
+package com.base_student.respository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-import com.base_student.demo.model.StudentModel;
+import com.base_student.model.StudentModel;
 
-@Repository 
+@Repository
 public interface StudentRepository extends JpaRepository<StudentModel, Integer> {
-    
-} 
+}
