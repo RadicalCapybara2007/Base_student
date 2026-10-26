@@ -21,7 +21,10 @@ public class ValidationUtil {
             throw new BusinessException("El nombre no debe estar vacío");
         }
 
+        if (Strings.isBlank(studentDto.lastName())) {
+            throw new BusinessException("El apellido no debe estar vacío");
+        }
+
     }
 
-}
 }
