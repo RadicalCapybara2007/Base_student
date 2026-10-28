@@ -16,4 +16,13 @@ public class ExceptionHandler {
         return new ResponseEntity<>(errorMessageDto, HttpStatus.BAD_REQUEST);
     }
 
+    @org.springframework.web.bind.annotation.ExceptionHandler(StudentNotFoundException.class)
+    public ResponseEntity<ErrorMessageDto> studentNotFoundExceptionHandler(
+            StudentNotFoundException exception) {
+        ErrorMessageDto errorMessageDto = new ErrorMessageDto(
+                exception.getMessage(),
+                HttpStatus.NOT_FOUND.toString());
+        return new ResponseEntity<>(errorMessageDto, HttpStatus.NOT_FOUND);
+    }
+
 }

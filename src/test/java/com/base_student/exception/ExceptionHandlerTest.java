@@ -23,4 +23,16 @@ class ExceptionHandlerTest {
         assertThat(body.getHttpStatus()).isEqualTo(HttpStatus.BAD_REQUEST.toString());
         assertThat(body.getMessage()).isEqualTo("El nombre no debe estar vacío");
     }
+
+    @Test
+    void convertsStudentNotFoundExceptionToNotFound() {
+        StudentNotFoundException exception = new StudentNotFoundException(42);
+
+        ResponseEntity<ErrorMessageDto> response =
+                exceptionHandler.studentNotFoundExceptionHandler(exception);
+
+        assertThat(response.getStatusCode()).isEqualTo(HttpStatus.NOT_FOUND);
+        assertThat(response.getBody().getHttpStatus()).isEqualTo(HttpStatus.NOT_FOUND.toString());
+        assertThat(response.getBody().getMessage()).isEqualTo("Usuario no encontrado con id: 42");
+    }
 }
