@@ -6,8 +6,9 @@ import org.springframework.stereotype.Service;
 import com.base_student.dto.StudentDto;
 import com.base_student.dto.StudentRsDto;
 import com.base_student.exception.BusinessException;
+import com.base_student.exception.StudentNotFoundException;
 import com.base_student.model.StudentModel;
-import com.base_student.respository.StudentRepository;
+import com.base_student.repository.StudentRepository;
 
 @Service
 public class StudentService {
@@ -23,7 +24,9 @@ public class StudentService {
     }
 
     public StudentDto findById(Integer id) throws BusinessException {
-        return studentRepository.findById(id).get().toDto();
+        return studentRepository.findById(id)
+                .map(StudentModel::toDto)
+                .orElseThrow(() -> new StudentNotFoundException(id));
     }
 
     public StudentRsDto create(StudentDto dto) {

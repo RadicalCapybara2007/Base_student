@@ -30,20 +30,21 @@ public class StudentController {
     }
 
     @GetMapping
-    public ResponseEntity<?> find(@RequestParam(value = "id", required = false) Integer id) throws BusinessException {
-        if (id == null) {
-            List<StudentDto> studentDtos = studentService.findAll();
-            return new ResponseEntity<>(studentDtos, HttpStatus.OK);
-        } else {
-            return new ResponseEntity<>(studentService.findById(id), HttpStatus.OK);
-        }
+    public ResponseEntity<List<StudentDto>> findAll() {
+        List<StudentDto> studentDtos = studentService.findAll();
+        return new ResponseEntity<>(studentDtos, HttpStatus.OK);
+    }
+
+    @GetMapping(params = "id")
+    public ResponseEntity<StudentDto> findById(@RequestParam("id") Integer id) throws BusinessException {
+        return new ResponseEntity<>(studentService.findById(id), HttpStatus.OK);
     }
 
     @PostMapping
-    public ResponseEntity<?> save(@RequestBody StudentDto studentDto) throws BusinessException {
+    public ResponseEntity<StudentRsDto> save(@RequestBody StudentDto studentDto) throws BusinessException {
         validationUtil.validate(studentDto);
         StudentRsDto rsDto = studentService.create(studentDto);
-        return new ResponseEntity<>(rsDto, HttpStatus.OK);
+        return new ResponseEntity<>(rsDto, HttpStatus.CREATED);
     }
 
 }
