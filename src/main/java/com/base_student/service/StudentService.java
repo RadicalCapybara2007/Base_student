@@ -8,7 +8,7 @@ import com.base_student.dto.StudentRsDto;
 import com.base_student.exception.BusinessException;
 import com.base_student.exception.StudentNotFoundException;
 import com.base_student.model.StudentModel;
-import com.base_student.respository.StudentRepository;
+import com.base_student.repository.StudentRepository;
 
 @Service
 public class StudentService {
